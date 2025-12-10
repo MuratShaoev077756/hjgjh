@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио веб-разработчика</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            animation: gradientShift 15s ease infinite;
+            background-size: 400% 400%;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db, #8e44ad);
+            background-size: 400% 400%;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
+            animation: headerGradient 10s ease infinite;
+        }
+        
+        @keyframes headerGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+            animation: waveMove 20s linear infinite;
+        }
+        
+        @keyframes waveMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 1440px 0;
+            }
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            animation: titleFloat 3s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes titleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: profilePulse 4s ease-in-out infinite, rotateBorder 10s linear infinite;
+            transition: transform 0.5s ease;
+        }
+        
+        @keyframes profilePulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 15px 40px rgba(52, 152, 219, 0.5);
+            }
+        }
+        
+        @keyframes rotateBorder {
+            0% {
+                border-color: white;
+            }
+            33% {
+                border-color: #3498db;
+            }
+            66% {
+                border-color: #2c3e50;
+            }
+            100% {
+                border-color: white;
+            }
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+        
+        nav {
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav li::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: white;
+            transition: left 0.3s ease;
+        }
+        
+        nav li:hover::before {
+            left: 0;
+        }
+        
+        nav a {
+            display: block;
+            padding: 1.2rem 1.8rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            animation: contentAppear 1s ease-out 0.5s both;
+        }
+        
+        @keyframes contentAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 15px 15px 30px #d9d9d9, -15px -15px 30px #ffffff;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid #3498db;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        section:hover::before {
+            left: 100%;
+        }
+        
+        section:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 20px 20px 40px #c9c9c9, -20px -20px 40px #ffffff;
+            border-left-color: #e74c3c;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+            position: relative;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #e74c3c;
+            transition: width 0.5s ease;
+        }
+        
+        section:hover h2::after {
+            width: 100%;
+        }
+        
+        h3 {
+            color: #3498db;
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-left: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        h3::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover h3::before {
+            transform: rotate(90deg);
+        }
+        
+        article {
+            margin-bottom: 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        
+        ul {
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            transition: transform 0.3s ease;
+            animation: slideInRight 0.5s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        li:hover::before {
+            color: #e74c3c;
+            transform: translateX(5px);
+        }
+        
+        li:hover {
+            transform: translateX(10px);
+        }
+        
+        strong {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            animation: cardAppear 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        @keyframes cardAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .portfolio-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .portfolio-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        
+        .portfolio-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+        
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db, #e74c3c);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .portfolio-item:hover {
+            border-color: #3498db;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.2);
+            transform: translateY(-10px) rotateX(5deg);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 250px;
+            position: relative;
+            animation: galleryItemAppear 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        @keyframes galleryItemAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) rotate(-10deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+        
+        .gallery-item:nth-child(2) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(7) { animation-delay: 0.6s; }
+        .gallery-item:nth-child(8) { animation-delay: 0.7s; }
+        .gallery-item:nth-child(9) { animation-delay: 0.8s; }
+        
+        .gallery-item:hover {
+            transform: translateY(-15px) scale(1.05) rotate(2deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.2) rotate(2deg);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            text-align: center;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        address {
+            font-style: normal;
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            animation: addressAppear 1s ease-out;
+        }
+        
+        @keyframes addressAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        address a {
+            color: #3498db;
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        address a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e74c3c;
+            transition: width 0.3s ease;
+        }
+        
+        address a:hover {
+            color: #e74c3c;
+            transform: translateX(10px);
+        }
+        
+        address a:hover::after {
+            width: 100%;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #1a252f);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #e74c3c, #3498db);
+            animation: footerLine 3s linear infinite;
+        }
+        
+        @keyframes footerLine {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 400px 0;
+            }
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+            position: relative;
+            animation: footerText 1s ease-out;
+        }
+        
+        @keyframes footerText {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Плавающие элементы декора */
+        .floating-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.1);
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+        
+        /* Кнопка скролла вверх */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            }
+            50% {
+                box-shadow: 0 5px 25px rgba(52, 152, 219, 0.8);
+            }
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: linear-gradient(135deg, #e74c3c, #3498db);
+        }
+        
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav a {
+                padding: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 3rem 1rem;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .profile-img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Плавающие декоративные элементы -->
+    <div class="floating-element" style="top: 10%; left: 5%;"></div>
+    <div class="floating-element" style="top: 20%; right: 10%; animation-delay: -2s;"></div>
+    <div class="floating-element" style="bottom: 30%; left: 15%; animation-delay: -4s;"></div>
+    
+    <header>
+        <h1>Портфолио веб-разработчика</h1>
+        <p>Создаю современные и функциональные веб-сайты</p>
+        <img src="https://s3newlxpbulgakov.storage.yandexcloud.net/user_9dd06b72-7894-428d-8398-a44be87190f6/photo_5188632879880600326_y_f54504c6-84cb-4b33-9703-d78db11e3f71.jpeg" alt="Фотография веб-разработчика" class="profile-img">
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#experience">Опыт работы</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#gallery">Галерея проектов</a></li>
+            <li><a href="#skills">Навыки</a></li>
+            <li><a href="#education">Образование</a></li>
+            <li><a href="#certificates">Сертификаты</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>Обо мне</h2>
+            <article>
+                <p>Я профессиональный веб-разработчик с более чем 2-летним опытом создания современных, отзывчивых и высокопроизводительных веб-сайтов и веб-приложений. Моя специализация охватывает полный цикл разработки - от проектирования архитектуры и UX/UI дизайна до реализации, тестирования и развертывания проектов.</p>
+                <p>За годы работы я успел поработать с клиентами из различных отраслей: IT, финансы, образование, здравоохранение, электронная коммерция и медиа. Каждый проект был уникальным вызовом, который позволил мне накопить богатый опыт решения разнообразных технических и бизнес-задач.</p>
+                <p>Я верю в силу технологий для преобразования бизнеса и улучшения жизни людей. Мой подход к разработке сочетает техническое совершенство с пониманием бизнес-целей клиента. Я стремлюсь создавать не просто работающие сайты, а эффективные инструменты, которые помогают бизнесу расти и развиваться.</p>
+                <p>В работе я придерживаюсь принципов чистого кода, тестирования и непрерывного улучшения. Постоянно изучаю новые технологии и методологии, чтобы оставаться в курсе последних тенденций веб-разработки и предлагать клиентам современные решения.</p>
+            </article>
+        </section>
+
+        <section id="experience">
+            <h2>Опыт работы</h2>
+            <article>
+                <h3>Frontend Developer - TechSolutions Inc.</h3>
+                <p>Разработка и поддержка крупных веб-приложений для международных клиентов. Руководство командой из 3 разработчиков. Внедрение современных практик разработки и повышение качества кода.</p>
+                
+                <h3>Fullstack Developer - DigitalAgency Pro</h3>
+                <p>Создание веб-сайтов и веб-приложений для клиентов агентства. Работа над проектами различной сложности - от лендингов до сложных систем управления контентом.</p>
+                
+                <h3>Web Developer - Freelance</h3>
+                <p>Работа с частными клиентами над разнообразными проектами. Разработка индивидуальных решений под конкретные бизнес-задачи.</p>
+            </article>
+        </section>
+
+        <section id="portfolio">
+            <h2>Портфолио проектов</h2>
+            <div class="portfolio-grid">
+                <article class="portfolio-item">
+                    <h3>Корпоративный портал для международной IT-компании</h3>
+                    <p>Разработка комплексного корпоративного портала с системой управления контентом, интеграцией с CRM и ERP системами, модулем аналитики и отчетности</p>
+                    <p><strong>Технологии:</strong> React, Node.js, MongoDB, Redis, Docker</p>
+                    <p><strong>Результаты:</strong> Увеличена эффективность внутренних процессов на 40%, сокращено время обработки заявок на 60%</p>
+                </article>
+                
+                <article class="portfolio-item">
+                    <h3>Интернет-магазин электроники с AI-рекомендациями</h3>
+                    <p>Создание высоконагруженного интернет-магазина с системой рекомендаций на основе машинного обучения, интеграцией с 10+ платежными системами и службами доставки.</p>
+                    <p><strong>Технологии:</strong> Vue.js, Python, PostgreSQL, Elasticsearch, AWS</p>
+                    <p><strong>Результаты:</strong> Конверсия увеличена на 35%, средний чек вырос на 25%</p>
+                </article>
+                
+                <article class="portfolio-item">
+                    <h3>Образовательная платформа с видеокурсами</h3>
+                    <p>Разработка платформы для онлайн-обучения с системой видеотрансляций, интерактивными заданиями, системой прогресса и сертификации.</p>
+                    <p><strong>Технологии:</strong> Angular, NestJS, MySQL, WebRTC, Firebase</p>
+                </article>
+                
+                <article class="portfolio-item">
+                    <h3>Фитнес-приложение</h3>
+                    <p>Создание кроссплатформенного приложения с синхронизацией данных с фитнес-браслетов, персонализированными тренировками и системой мотивации.</p>
+                    <p><strong>Технологии:</strong> React Native, GraphQL, MongoDB, AWS Lambda</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Галерея проектов</h2>
+            <p>Визуальное представление некоторых из моих работ:</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://ruward.ru/files/cases/amado-id-ru/keypict/portalvpor.jpg" alt="Проект 1">
+                    <div class="gallery-caption">
+                        <strong>Корпоративный портал</strong>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://masheka.by/uploads/posts/2024-03/1538980362453_469675ecommerce_469675.jpg" alt="Проект 2">
+                    <div class="gallery-caption">
+                        <strong>Интернет-магазин</strong>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://3ab0ed31-049c5350-6544-4365-ae7e-6e7e2957eeea.s3.timeweb.cloud/iblock/060/0605c8ea1d994a586f0018cb3c4bf301/de35f376edede00bd433dae877e147a6.png" alt="Проект 3">
+                    <div class="gallery-caption">
+                        <strong>Образовательная платформа</strong>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://cdn.lifehacker.ru/wp-content/uploads/2016/04/123_1460542631.jpg" alt="Проект 4">
+                    <div class="gallery-caption">
+                        <strong>Фитнес-приложение</strong>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://news.store.rambler.ru/img/d73c3594416f04f635873db2fd7d7053?img-format=auto&img-1-resize=height:350,fit:max&img-2-filter=sharpen" alt="Проект 5">
+                    <div class="gallery-caption">
+                        <strong>Банковское приложение</strong>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://avatars.mds.yandex.net/i?id=4dd766958ba71571ec25739e85ca7542ec238440-4449234-images-thumbs&n=13" alt="Проект 6">
+                    <div class="gallery-caption">
+                        <strong>Медиа платформа</strong>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.sostav.ru/blogs/images/feeds/59/117933.jpg" alt="Проект 7">
+                    <div class="gallery-caption">
+                        <strong>CRM система</strong>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.1cbit.kz/1csoft/1s-upravlenie-kholdingom-8/img/invest.png" alt="Проект 8">
+                    <div class="gallery-caption">
+                        <strong>Аналитическая панель</strong>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/a99c8153717055.Y3JvcCwxMzY5LDEwNzEsMCwxOTI.jpg" alt="Проект 9">
+                    <div class="gallery-caption">
+                        <strong>Мобильное приложение</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Технические навыки</h2>
+            <article>
+                <h3>Фронтенд разработка</h3>
+                <ul>
+                    <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                    <li>React, Vue.js, Angular</li>
+                    <li>TypeScript, Webpack, Vite</li>
+                </ul>
+                
+                <h3>Бэкенд разработка</h3>
+                <ul>
+                    <li>Node.js, Express, NestJS</li>
+                    <li>Python, Django, Flask</li>
+                    <li>REST API, GraphQL</li>
+                    <li>Базы данных: MySQL, PostgreSQL, MongoDB</li>
+                </ul>
+                
+                <h3>Инструменты и технологии</h3>
+                <ul>
+                    <li>Docker, Kubernetes</li>
+                    <li>AWS, Google Cloud, Azure</li>
+                    <li>CI/CD: Jenkins, GitHub Actions</li>
+                    <li>Git, GitFlow</li>
+                    <li>Testing: Jest, Cypress, Selenium</li>
+                    <li>Agile/Scrum методологии</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="education">
+            <h2>Образование и курсы</h2>
+            <article>
+                <h3>Магистр компьютерных наук - Московский государственный университет</h3>
+                <p>Специализация: Веб-технологии и распределенные системы</p>
+                
+                <h3>Бакалавр информатики - Санкт-Петербургский политехнический университет</h3>
+                <p>Диплом с отличием, средний балл: 4.9</p>
+                
+                <h3>Дополнительное образование:</h3>
+                <ul>
+                    <li>Advanced React и Redux - Udemy (2023)</li>
+                    <li>AWS Certified Solutions Architect - Amazon Web Services (2025)</li>
+                    <li>Fullstack JavaScript Development - Яндекс.Практикум (2025)</li>
+                    <li>Web Security Fundamentals - Coursera (2025)</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="certificates">
+            <h2>Сертификаты и достижения</h2>
+            <article>
+                <ul>
+                    <li>AWS Certified Solutions Architect - Associate (2025)</li>
+                    <li>Google Mobile Web Specialist (2022)</li>
+                    <li>Microsoft Certified: Azure Fundamentals (2025)</li>
+                    <li>Победитель хакатона "Digital Solutions 2025"</li>
+                    <li>Участник конференции React Conf 2025</li>
+                    <li>Автор технических статей на Habr и Medium</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="contact">
+            <h2>Контакты</h2>
+            <article>
+                <p>Готов обсудить ваш проект и предложить оптимальное решение. Свяжитесь со мной любым удобным способом:</p>
+                
+                <address>
+                    <strong>Email:</strong> <a href="mailto:msaoev@gmail.com">msaoev@gmail.com</a><br>
+                    <strong>Телефон:</strong> <a href="tel:+79925555830">+7 (992)-555-58-30</a><br>
+                    <strong>Telegram:</strong> @your_telegram<br>
+                    <strong>LinkedIn:</strong> linkedin.com/in/yourprofile<br>
+                    <strong>GitHub:</strong> github.com/yourusername<br>
+                    <strong>Местоположение:</strong> Москва, Россия (готов к удаленной работе)
+                </address>
+                
+                <p>Я отвечаю на сообщения в течение 2-3 часов в рабочее время. Первая консультация бесплатна и ни к чему не обязывает. Давайте обсудим, как я могу помочь реализовать ваши идеи!</p>
+            </article>
+        </section>
+    </main>
+
+    <!-- Кнопка скролла вверх -->
+    <div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+    <footer>
+        <p>&copy; 2025 Портфолио веб-разработчика. Все права защищены.</p>
+        <p>Последнее обновление: январь 2025 года</p>
+    </footer>
+
+    <script>
+        // Анимация появления кнопки скролла
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Анимация при наведении на секции
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            section.addEventListener('mouseenter', () => {
+                section.style.transform = 'translateY(-15px) scale(1.03)';
+            });
+            
+            section.addEventListener('mouseleave', () => {
+                section.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Анимация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+            
+            // Добавляем задержку для появления элементов
+            const animatedElements = document.querySelectorAll('article, .portfolio-item, .gallery-item');
+            animatedElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
